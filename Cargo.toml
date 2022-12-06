@@ -1,0 +1,15 @@
+[package]
+name = "net-monitor"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clickhouse = {version = "0.11.1", features = ["wa-37420"]}
+#CH server older than v22.6 (2022-06-16) handles RowBinary incorrectly in some rare cases.
+#Enable wa-37420 feature to solve this problem. Don't use it for newer versions.
+
+serde = {version = "1.0.148", features = ["derive"]}
+tokio = { version = "1.22.0", features = ["full"] }
+clap = {version = "4.0.29", features = ["derive"] }
